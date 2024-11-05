@@ -1,7 +1,9 @@
 from sqlalchemy import Column, Integer, Numeric, String
-from database import Base
+from sqlalchemy.ext.declarative import declarative_base
 
-class Datos(Base):
+Base = declarative_base()
+
+class RecursoReserva(Base):
     __tablename__ = "recursos_reservas"
     id = Column(Integer, primary_key=True, index=True)
     operation_id = Column(Integer, index=True)
