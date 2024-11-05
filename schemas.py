@@ -43,17 +43,28 @@ class Datos(DatosBase):
     id: int
 
 
-class YearDataSchema(BaseModel):
+class YearDataBase(BaseModel):
     id: int
     year_data: int
 
-class TypeColumnSchema(BaseModel):
+class YearDataList(BaseModel):
+    id: int
+   
+
+class TypeColumnBase(BaseModel):
     id: int
     type_column: str
+
+class TypeColumnList(BaseModel):
+    id: int
+
     
-class PhaseEstimationSchema(BaseModel):
+class PhaseEstimationBase(BaseModel):
     id: int
     PhaseEstimation: str
+    
+class PhaseEstimationList(BaseModel):
+    id: int
 
     
     class Config:

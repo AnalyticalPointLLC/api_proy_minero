@@ -4,9 +4,10 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.future import select
 
 from database import SessionLocal
-from schemas import DatosBase, YearDataSchema, TypeColumnSchema, PhaseEstimationSchema # Asegúrate de que este importe es correcto y refleja tu estructura
-from models import YearData, TypeColumn, PhaseEstimation
-import crud
+
+from sqlalchemy.orm import Session
+from .. import crud, models, schemas, database
+
 
 router = APIRouter()
 
@@ -35,27 +36,10 @@ async def create_datos(datos: DatosBase, db: AsyncSession = Depends(get_db)):
     
 
     
-@router.get("/year_data/", response_model=list[YearDataSchema])
-async def read_years(db: AsyncSession = Depends(get_db)):
-    async with db as session:
-        result = await session.execute(select(YearData))
-        years_list = result.scalars().all()
-        return years_list
+@router.get("/year_data/", response_model=list[schemas.YearDataBase])
+def read_year_data(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    year_data = crud.get_year_data(db=db, skip=skip, limit=limit)
+    return year_data
 
 
-    
-@router.get("/type_column/", response_model=list[TypeColumnSchema])
-async def read_years(db: AsyncSession = Depends(get_db)):
-    async with db as session:
-        result = await session.execute(select(TypeColumn))
-        type_column = result.scalars().all()
-        return type_column
-    
-    
-@router.get("/phase_estimation/", response_model=list[PhaseEstimationSchema])
-async def read_years(db: AsyncSession = Depends(get_db)):
-    async with db as session:
-        result = await session.execute(select(PhaseEstimation))
-        phase_estimation = result.scalars().all()
-        return phase_estimation
     
