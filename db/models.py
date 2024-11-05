@@ -30,6 +30,17 @@ class RecursoReserva(Base):
     meta1 = Column(Numeric(18,2))
     meta2 = Column(Numeric(18,2))
     
+class RecursoReservaPercent(Base):
+    __tablename__ = "recursos_reservas_percent"
+    id = Column(Integer, primary_key=True, index=True)
+    recursos_reservas_id = Column(Integer, index=True)
+    zn_percent = Column(Numeric(18,2))
+    pb_percent = Column(Numeric(18,2))
+    cu_percent = Column(Numeric(18,2))
+    au_gt = Column(Numeric(18,2))
+    ag_gt = Column(Numeric(18,2))
+
+    
 class YearData(Base):
     __tablename__ = "year_data"
     id = Column(Integer, primary_key=True, index=True)
