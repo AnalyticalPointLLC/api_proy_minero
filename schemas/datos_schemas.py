@@ -26,7 +26,7 @@ class TypeColumnList(TypeColumnBase):
     
 class PhaseEstimationBase(BaseModel):
     id: int
-    PhaseEstimation: str
+    phase_estimation: str
     
 class PhaseEstimationList(PhaseEstimationBase):
     id: int
