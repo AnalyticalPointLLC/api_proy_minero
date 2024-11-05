@@ -1,5 +1,7 @@
 from pydantic import BaseModel
 from typing import Optional
+from datetime import datetime
+
 
 
 
@@ -27,6 +29,8 @@ class RecursoReservaCreate(BaseModel):
     comments_detail: str
     meta1: float
     meta2: float
+    created_at: Optional[datetime] = None
+
     
     class Config:
         orm_mode = True
@@ -81,6 +85,7 @@ class RecursoReservaCompleto(BaseModel):
     comments_detail: str
     meta1: float
     meta2: float
+    created_at: Optional[datetime] = None
     
     class Config:
         orm_mode = True

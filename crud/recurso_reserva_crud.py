@@ -43,8 +43,11 @@ def create_recurso_reserva(db: Session, recurso_reserva: RecursoReserva):
 
 
 
-def get_recursos_reservas_completos(db: Session, type_column: str, year_data: int, skip: int = 0, limit: int = 100):
+def get_recursos_reservas_completos(db: Session, operation_id: int, type_column: str, year_data: int, skip: int = 0, limit: int = 100):
     return db.query(
+        RecursoReserva.operation_id,
+        RecursoReserva.type_column,
+        RecursoReserva.year_data,
         RecursoReserva.tonnes,
         RecursoReservaPercent.zn_percent,
         RecursoReservaPercent.pb_percent,
@@ -69,8 +72,10 @@ def get_recursos_reservas_completos(db: Session, type_column: str, year_data: in
         RecursoReserva.phase_estimation,
         RecursoReserva.comments_detail,
         RecursoReserva.meta1,
-        RecursoReserva.meta2
+        RecursoReserva.meta2,
+        RecursoReserva.created_at
     ).join(RecursoReservaPercent, RecursoReserva.id == RecursoReservaPercent.recursos_reservas_id)\
+    .filter(RecursoReserva.operation_id == operation_id)\
     .filter(RecursoReserva.type_column == type_column)\
     .filter(RecursoReserva.year_data == year_data)\
     .offset(skip)\

@@ -1,5 +1,8 @@
-from sqlalchemy import Column, Integer, Numeric, String
+from sqlalchemy import Column, Integer, Numeric, String, DateTime
 from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.sql import func
+
+
 
 Base = declarative_base()
 
@@ -29,6 +32,7 @@ class RecursoReserva(Base):
     comments_detail = Column(String, nullable=False)
     meta1 = Column(Numeric(18,2))
     meta2 = Column(Numeric(18,2))
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
     
 class RecursoReservaPercent(Base):
     __tablename__ = "recursos_reservas_percent"
