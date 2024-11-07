@@ -33,7 +33,7 @@ class RecursoReservaCreate(BaseModel):
 
     
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 class RecursoReserva(RecursoReservaCreate):
     id: int
@@ -51,7 +51,7 @@ class RecursoReservaPercent(RecursoReservaPercentCreate):
     id: int
     
     class Config:
-        orm_mode = True
+        from_attributes = True
         
         
         
@@ -88,4 +88,4 @@ class RecursoReservaCompleto(BaseModel):
     created_at: Optional[datetime] = None
     
     class Config:
-        orm_mode = True
+        from_attributes = True

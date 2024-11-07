@@ -8,7 +8,7 @@ alias deactivate 'test $?_OLD_VIRTUAL_PATH != 0 && setenv PATH "$_OLD_VIRTUAL_PA
 # Unset irrelevant variables.
 deactivate nondestructive
 
-setenv VIRTUAL_ENV "/Users/marcelohumerez/Library/Mobile Documents/com~apple~CloudDocs/DATA/DATA - iCLOUD/SOFTWARE/Proyectos/proyecto_minero/api_proyecto_minero/env"
+setenv VIRTUAL_ENV "/Users/marcelohumerez/Library/Mobile Documents/com~apple~CloudDocs/DATA/DATA - iCLOUD/SOFTWARE/Proyectos/proyecto_minero/api_mineria/env"
 
 set _OLD_VIRTUAL_PATH="$PATH"
 setenv PATH "$VIRTUAL_ENV/bin:$PATH"
